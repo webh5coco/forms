@@ -51,11 +51,26 @@
        <label for="cheke">女</label>
        <input type="checkbox" name="chek" id="cheke">
    </p>
+
+
+   <p>
+    <label for="yz">邮政编码:</label>
+  <input type="text" name="yz" id="yz">    
+   </p>
+  
    <input type="submit" value="提交">
 </form>
 <script>
      $(function(){ 
+
+
+            jQuery.validator.addMethod("isZipCode", function(value, element) {   
+           var tel = /^[0-9]{6}$/;
+         return this.optional(element) || (tel.test(value));
+         }, "请正确填写您的邮政编码");
+
         $("#guo").validate({
+
 
           /*  submitHandler:function() {
 
@@ -80,6 +95,9 @@
                 chek:{
                    required:true,
                    minlength:2
+                },
+                yz:{
+                    isZipCode:true,
                 }
             },
 
@@ -102,6 +120,17 @@
         })
      })
 
+
+
+
+</script>
+
+<script>
+
+            jQuery.validator.addMethod("isZipCode", function(value, element) {   
+           var tel = /^[0-9]{6}$/;
+         return this.optional(element) || (tel.test(value));
+      }, "请正确填写您的邮政编码");
 
 </script>
     
