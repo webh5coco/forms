@@ -68,7 +68,7 @@
            var tel = /^[0-9]{6}$/;
          return this.optional(element) || (tel.test(value));
          }, "请正确填写您的邮政编码");
-
+       //自定义的表单验证方式，在addMethod里面定义验证规则，第一个参数是验证规则名称，第二个是实现主体，第三个是错误提示内容
         $("#guo").validate({
 
 
@@ -97,7 +97,7 @@
                    minlength:2
                 },
                 yz:{
-                    isZipCode:true,
+                    isZipCode:true,//启用邮件
                 }
             },
 
