@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="https://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+<script src="https://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+</head>
+<style>
+    .error{padding-left:10px;position: relative;color:red;}
+   /*  .error:before{
+       content:" ";
+       display: block;
+       width:3px;
+       height:3px;
+       border-radius: 50%;
+       background-color: red;
+       position: absolute;
+       left:3px;
+       top:5px;
+   
+   
+   } */
+</style>
+<body>
+
+<form action="" id="guo">
+   <p>
+       <label for="guoname">name</label>
+       <input type="text" id="guoname" name="guoname">
+   </p>
+   <p>
+       <label for="passw">密码：</label>
+       <input type="text" id="passw" name="passw">
+   </p>
+   <p>
+       <label for="repassw">密码：</label>
+       <input type="text" id="repassw" name="repassw">
+   </p>
+
+   <p>
+       <label for="chek">男</label>
+       <input type="checkbox" name="chek" id="chek">
+   </p>
+
+   <p>
+       <label for="cheke">女</label>
+       <input type="checkbox" name="chek" id="cheke">
+   </p>
+   <input type="submit" value="提交">
+</form>
+<script>
+     $(function(){ 
+        $("#guo").validate({
+
+          /*  submitHandler:function() {
+
+                setTimeout(function(){
+
+                    window.open("http://www.baidu.com","_blank");
+                },3000)
+          } ,*/
+
+/*          submitHandler：通过验证后运行的函数，里面要加上表单提交的函数，否则表单不会提交。*/
+            rules:{
+                guoname:"required",
+                passw:{
+                    required:true,
+                    minlength:6
+                },
+                repassw:{
+                    required:true,
+                    minlength:6,
+                    equalTo:"#passw"
+                },
+                chek:{
+                   required:true,
+                   minlength:2
+                }
+            },
+
+            messages:{
+                guoname:"这是必填项",
+                passw:{
+                    required:"必填项",
+                    minlength:"最小6位字符"
+                },
+                repassw:{
+                    required:"必填项",
+                    minlength:"最小6位字符",
+                    equalTo:"账号密码不匹配"
+                },
+                 chek:{
+                   required:"请选择你的类型",
+                   minlength:"至少选中两个"
+                }
+            }
+        })
+     })
+
+
+</script>
+    
+</body>
+</html>
